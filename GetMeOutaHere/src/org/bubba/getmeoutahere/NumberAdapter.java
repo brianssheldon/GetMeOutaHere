@@ -2,6 +2,8 @@ package org.bubba.getmeoutahere;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -67,7 +69,18 @@ public class NumberAdapter extends BaseAdapter
 						{
 						       public void run() 
 						       {
-						    	   mPlayer = MediaPlayer.create(v.getContext(), R.raw.aringtone);
+						    	   Uri uri = RingtoneManager.getActualDefaultRingtoneUri(
+						    			   v.getContext(), RingtoneManager.TYPE_RINGTONE);
+						    	   
+						    	   if(uri == null)
+						    	   {
+						    		   mPlayer = MediaPlayer.create(v.getContext(), R.raw.aringtone);
+						    	   }
+						    	   else
+						    	   {
+						    		   mPlayer = MediaPlayer.create(v.getContext(), uri);
+						    	   }
+						    	   
 								   mPlayer.setScreenOnWhilePlaying(true);
 								   mPlayer.start();
 								   v.postDelayed(new Runnable(){public void run(){
