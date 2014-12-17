@@ -14,6 +14,7 @@ import android.widget.GridView;
 public class NumberAdapter extends BaseAdapter
 {
     private Context mContext;
+    public MediaPlayer mPlayer;
 
 	public NumberAdapter(GetMeOutaHereActivity getMeOutaHereActivity)
 	{
@@ -56,7 +57,6 @@ public class NumberAdapter extends BaseAdapter
 
         OnClickListener buttonListener = new OnClickListener()
 		{
-        	MediaPlayer mPlayer;
 			@Override
 			public void onClick(final View v)
 			{
@@ -82,10 +82,11 @@ public class NumberAdapter extends BaseAdapter
 						    	   }
 						    	   
 								   mPlayer.setScreenOnWhilePlaying(true);
-								   mPlayer.start();
+                                   mPlayer.setLooping(true);
+                                   mPlayer.start();
 								   v.postDelayed(new Runnable(){public void run(){
 									   mPlayer.stop();
-									   mPlayer.release();}}, 4000);	
+									   mPlayer.release();}}, 30000);
 						       }
 						 }, i * 1000 * ((GetMeOutaHereActivity)v.getContext()).timeMultiplier);
 				}
@@ -99,4 +100,12 @@ public class NumberAdapter extends BaseAdapter
         button.setOnClickListener(buttonListener);
         return button;
 	}
+
+    public MediaPlayer getmPlayer() {
+        return mPlayer;
+    }
+
+    public void setmPlayer(MediaPlayer mPlayer) {
+        this.mPlayer = mPlayer;
+    }
 }

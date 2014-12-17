@@ -1,6 +1,7 @@
 package org.bubba.getmeoutahere;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 public class GetMeOutaHereActivity extends Activity 
 {
 	public int timeMultiplier = 60;
+    public GridView gridview;
 	
     /** Called when the activity is first created. */
     @Override
@@ -21,7 +23,7 @@ public class GetMeOutaHereActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        GridView gridview = (GridView) findViewById(R.id.gridview);
+        gridview = (GridView) findViewById(R.id.gridview);
         gridview.setAdapter(new NumberAdapter(this));
 
         gridview.setOnItemClickListener(new OnItemClickListener() 
@@ -58,5 +60,9 @@ public class GetMeOutaHereActivity extends Activity
 					timeMultiplier = 1;
 				}
 			});
+    }
+
+    public void hangup(View view) {
+        ((NumberAdapter)gridview.getAdapter()).getmPlayer().stop();
     }
 }

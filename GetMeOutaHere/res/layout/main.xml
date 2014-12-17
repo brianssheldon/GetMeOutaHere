@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <TextView
         android:layout_width="fill_parent"
@@ -27,6 +28,32 @@
         android:text=" "
         android:gravity="center_horizontal"/>
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/minutes"
+            android:layout_width="60dp"
+            android:layout_height="40dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_weight="1.0"
+            android:text="Minutes"
+            android:gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/seconds"
+            android:layout_width="80dp"
+            android:layout_height="40dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_weight="1.0"
+            android:text="Seconds"
+            android:gravity="center_horizontal"/>
+    </LinearLayout>
+
 	<GridView xmlns:android="http://schemas.android.com/apk/res/android" 
 	    android:id="@+id/gridview"
 	    android:layout_width="fill_parent" 
@@ -37,38 +64,22 @@
 	    android:horizontalSpacing="10dp"
 	    android:stretchMode="columnWidth"
 	    android:gravity="center"
-	/>
+        android:layout_weight="0.21" />
 	
     <TextView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:textSize="10dip"
         android:text=" "
         android:gravity="center_horizontal"/>
-    
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:orientation="horizontal">
-	    
-	    <Button
-	        android:id="@+id/minutes"
-	        android:layout_width="60dp"
-	        android:layout_height="40dip"
-	        android:layout_marginLeft="10dip"
-	        android:layout_marginRight="10dip"
-            android:layout_weight="1.0"
-	        android:text="Minutes"
-	        android:gravity="center_horizontal"/>
-	    
-	    <Button
-	        android:id="@+id/seconds"
-	        android:layout_width="80dp"
-	        android:layout_height="40dip"
-	        android:layout_marginLeft="10dip"
-	        android:layout_marginRight="10dip"
-            android:layout_weight="1.0"
-	        android:text="Seconds"
-	        android:gravity="center_horizontal"/>
-	</LinearLayout>
+
+    <Button
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="Hang Up"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.31"
+        android:onClick="hangup"/>
 </LinearLayout>
